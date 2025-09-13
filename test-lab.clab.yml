@@ -1,0 +1,10 @@
+name: test-lab
+topology:
+  nodes:
+    node1:
+      kind: linux
+      image: alpine:latest
+  links: []
+mgmt:
+  network: test-lab-mgmt
+  ipv4_subnet: 172.80.80.0/24
