@@ -1,0 +1,41 @@
+{
+  "name": "Containerlab Lab - test-lab",
+  "image": "ghcr.io/srl-labs/containerlab/devcontainer-dind-slim:0.68.0",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "srl-labs.vscode-containerlab",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-json",
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "containerlab.defaultSshUser": "admin",
+        "yaml.schemas": {
+          "https://raw.githubusercontent.com/srl-labs/containerlab/main/schemas/clab.schema.json": [
+            "*.clab.yml",
+            "*.clab.yaml"
+          ]
+        }
+      }
+    }
+  },
+  "forwardPorts": [
+    5000,
+    8000,
+    8080,
+    8443
+  ],
+  "postCreateCommand": "echo 'Containerlab ready!' && containerlab version",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ]
+}
